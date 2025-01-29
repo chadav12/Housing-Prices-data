@@ -1,0 +1,42 @@
+import statistics
+import matplotlib.pyplot as plt  # be sure to import matplotlib.pyplot from Python interpreter before running
+
+housing_prices = [278000, 259000, 297000, 334000, 369400, 366000, 364000, 399000,
+                  384000, 384600, 403900, 497000, 552600, 492300]  # for the past 14 years
+
+# Calculate the mean
+mean_price = round(sum(housing_prices) / len(housing_prices))
+print("Mean Housing Price:", mean_price)
+
+# Calculate the median
+median_price = statistics.median(housing_prices)
+print("Median Housing Price:", median_price)
+
+# Calculate the mode
+mode_price = statistics.mode(housing_prices)
+print("Mode Housing Price:", mode_price)
+
+# Calculate the standard deviation
+std_dev_price = round(statistics.stdev(housing_prices))
+print("Standard Deviation of Housing Prices:", std_dev_price)
+
+# Calculate the variance
+variance_price = round(statistics.variance(housing_prices))
+print("Variance of Housing Prices:", variance_price)
+
+# Calculate the percentage increase from the previous year to the current year
+percentage_increase = ((mean_price - housing_prices[-1]) / housing_prices[-1]) * 100
+print(f"Percentage Increase from Previous Year to Current Year: {percentage_increase:.2f}%")
+
+# Calculate the estimated future housing price for the next year
+estimated_future_price = mean_price + (std_dev_price * 2)
+print(f"Estimated Future Housing Price for the Next Year: ${estimated_future_price:.2f}")
+
+# Create a bar graph
+years = ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023']
+plt.bar(years, housing_prices)
+plt.xlabel('Year')
+plt.ylabel('Housing Price')
+plt.title('Housing Prices Over 14 Years')
+plt.show()
+
